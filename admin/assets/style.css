@@ -1,0 +1,9 @@
+body {
+  background: url(../assets/bela.jpg) no-repeat;
+  background-size: cover;
+}
+
+.navbar,
+.im-box {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}

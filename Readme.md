@@ -1,12 +1,14 @@
 ## Panduan syntax untuk Commit
 
-**Jika Ingin Mehapus Data**
+**Berikut adalah panduan untuk melakukan commit**
 | action | Description |
 | --- | --- |
-| `add: <*context*>` | Deskripsi commit untuk **Menambahkan** files |
-| `change: <*context*>` | Deskripsi commit untuk **Mengedit** files |
-| `remove: <*context*>` | Deskripsi commit untuk **Menghapus** files |
+| `add: _context_` | Deskripsi commit untuk **Menambahkan** files |
+| `change: _context_` | Deskripsi commit untuk **Mengedit** files |
+| `remove: _context_` | Deskripsi commit untuk **Menghapus** files |
 
-###### Contoh :
+Contoh :
+> ```git commit "add: crud product"```
 
-> ```git commit``` "add: crud product" 
+## Catatan :
+> Pastikan file yang di `commit` sesuai dengan deskripsi commit. contoh meng-commit ```git commit "add: crud product"``` maka filenya juga harus merupakan bagian dari **crud product** itu sendiri.

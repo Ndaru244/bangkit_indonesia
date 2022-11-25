@@ -3,9 +3,10 @@
 **Berikut adalah panduan untuk melakukan commit :**
 | action | Description |
 | --- | --- |
-| `"add: context"` | Deskripsi commit untuk **Menambahkan** files |
-| `"change: context"` | Deskripsi commit untuk **Mengedit** files |
-| `"remove: context"` | Deskripsi commit untuk **Menghapus** files |
+| `"add: context"` | Deskripsi commit jika ingin **Menambahkan** files |
+| `"change: context"` | Deskripsi commit jika ingin **Mengedit** files |
+| `"remove: context"` | Deskripsi commit jika ingin **Menghapus** files |
+| `"fix: context"` | Deskripsi commit jika ingin **Memperbaiki bug atau error** |
 
 Contoh :
 > ```git commit "add: crud product"```

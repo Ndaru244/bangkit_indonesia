@@ -1,6 +1,12 @@
-Thanks for downloading this template!
+## Panduan syntax untuk Commit
 
-Template Name: Impact
-Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+**Jika Ingin Mehapus Data**
+| action | Description |
+| --- | --- |
+| `add: <*context*>` | Deskripsi commit untuk **Menambahkan** files |
+| `change: <*context*>` | Deskripsi commit untuk **Mengedit** files |
+| `remove: <*context*>` | Deskripsi commit untuk **Menghapus** files |
+
+###### Contoh :
+
+> ```git commit``` "add: crud product" 

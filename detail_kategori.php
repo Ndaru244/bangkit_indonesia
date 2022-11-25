@@ -1,4 +1,4 @@
-<?php include 'admin\_config.php'; ?>
+<?php include './admin/_config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 

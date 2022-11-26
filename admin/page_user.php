@@ -31,7 +31,7 @@
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUpdate">
                                     Edit user
                                 </button>
-                                <a class="badge badge-success" href="user_edit.php?id=<?= $row['id_user'] ?>">Edit</a>
+                                <a class="badge badge-success" href="user_edit.php?id_user=<?= $row['id_user'] ?>">Edit</a>
                                 <a class="badge badge-danger" href="user_delete.php?id=<?= $row['id_user'] ?>" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
                             </td>
                         </tr>

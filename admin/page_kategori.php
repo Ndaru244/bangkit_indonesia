@@ -8,29 +8,32 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAdd">
                 Tambah Data Kategori
             </button>
-            <table class="table table-bordered mt-3">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Kategori</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $i = 1;
-                    $data = mysqli_query($con, "SELECT * FROM kategori");
-                    foreach ($data as $row) : ?>
+            <div class="table-responsive-md">
+                <table class="table mt-3">
+                    <thead>
                         <tr>
-                            <th scope="row"><?= $i++ ?></th>
-                            <td><?= $row['kategori'] ?></td>
-                            <td>
-                                <a class="badge badge-success" href="page_edit.php?id_kategori=<?= $row['id_kategori'] ?>">Edit</a>
-                                <a class="badge badge-danger" href="kategori_delete.php?id_kategori=<?= $row['id_kategori'] ?>" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
-                            </td>
+                            <th scope="col">#</th>
+                            <th scope="col">Kategori</th>
+                            <th style="width: 15%;">&nbsp;</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $i = 1;
+                        $data = mysqli_query($con, "SELECT * FROM kategori");
+                        foreach ($data as $row) : ?>
+                            <tr>
+                                <th scope="row"><?= $i++ ?></th>
+                                <td><?= $row['kategori'] ?></td>
+                                <td>
+                                    <a class="btn btn-sm btn-success" href="page_edit.php?id_kategori=<?= $row['id_kategori'] ?>">Edit</a>
+                                    <a class="btn btn-sm btn-danger" href="kategori_delete.php?id_kategori=<?= $row['id_kategori'] ?>" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

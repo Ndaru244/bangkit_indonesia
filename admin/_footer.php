@@ -1,6 +1,6 @@
 <!-- footer -->
 <nav class="navbar fixed-bottom navbar-light bg-light">
-    <div class="navbar-brand" href="#">Copyright 2022 &copy; <a class="font-weight-bold" style="text-decoration: none;" target="_blank"> Bangkitkan Semangat Indonesia</a>. All right reserved.</div>
+    <div class="text-center text-sm" href="#">Copyright 2022 &copy; <a class="font-weight-bold" style="text-decoration: none;" target="_blank"> Bangkitkan Semangat Indonesia</a>. All right reserved.</div>
 </nav>
 <!-- ./footer -->
 

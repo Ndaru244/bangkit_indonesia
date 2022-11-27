@@ -8,36 +8,39 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAdd">
                 Tambah Data user
             </button>
-            <table class="table table-bordered mt-3">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Password</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $i = 1;
-                    $data = mysqli_query($con, "SELECT * FROM user");
-                    foreach ($data as $row) : ?>
+            <div class="table-responsive-md mt-3">
+                <table id="tabel-data" class="table table-bordered">
+                    <thead>
                         <tr>
-                            <th scope="row"><?= $i++ ?></th>
-                            <td><?= $row['nama_user'] ?></td>
-                            <td><?= $row['username'] ?></td>
-                            <td><?= $row['password'] ?></td>
-                            <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUpdate">
-                                    Edit user
-                                </button>
-                                <a class="badge badge-success" href="user_edit.php?id_user=<?= $row['id_user'] ?>">Edit</a>
-                                <a class="badge badge-danger" href="user_delete.php?id=<?= $row['id_user'] ?>" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
-                            </td>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Password</th>
+                            <th style="width: 15%;">&nbsp;</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $i = 1;
+                        $data = mysqli_query($con, "SELECT * FROM user");
+                        foreach ($data as $row) : ?>
+                            <tr>
+                                <th scope="row"><?= $i++ ?></th>
+                                <td><?= $row['nama_user'] ?></td>
+                                <td><?= $row['username'] ?></td>
+                                <td><?= $row['password'] ?></td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUpdate">
+                                        Edit user
+                                    </button>
+                                    <a class="badge badge-success" href="user_edit.php?id_user=<?= $row['id_user'] ?>">Edit</a>
+                                    <a class="badge badge-danger" href="user_delete.php?id=<?= $row['id_user'] ?>" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

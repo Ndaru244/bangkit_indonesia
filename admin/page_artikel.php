@@ -1,15 +1,15 @@
 <?php include '_header.php'; ?>
 <!-- content -->
 <div class="container mt-5">
-    <div class="card im-box">
+    <div class="card im-box mb-5">
         <h5 class="card-header">Data Artikel</h5>
         <div class="card-body">
             <h5 class="card-title">Lihat Data Artikel</h5>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAdd">
                 Tambah Data Artikel
             </button>
-            <div class="table-responsive-md">
-                <table class="table table-bordered mt-3">
+            <div class="table-responsive-md mt-3">
+                <table id="tabel-data" class="table table-bordered">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

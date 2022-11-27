@@ -6,18 +6,20 @@
 
 <!-- Speififc Script -->
 <script>
-$('#summernote').summernote({
-        placeholder: '',
-        
-        height: 300,
-        focus: true
-      });
+  $('#summernote').summernote({
+      placeholder: '',
+      height: 300,
+      focus: true
+  });
+  $(document).ready(function(){
+    $('#tabel-data').DataTable();
+  });
 imgInp.onchange = evt => {
   const [file] = imgInp.files
   if (file) {
     preview.src = URL.createObjectURL(file)
-  }
-}
+  };
+};
 </script>
 </body>
 

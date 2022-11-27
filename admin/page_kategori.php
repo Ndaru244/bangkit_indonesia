@@ -8,8 +8,8 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAdd">
                 Tambah Data Kategori
             </button>
-            <div class="table-responsive-md">
-                <table class="table mt-3">
+            <div class="table-responsive-md mt-3">
+                <table id="tabel-data" class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

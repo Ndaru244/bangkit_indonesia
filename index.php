@@ -68,7 +68,7 @@
             <div class="row gy-5" data-aos="fade-in">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
                     <h2>Bangkitkan Semangat <span>Indonesia</span></h2>
-                    <p>Kita tidak boleh berhenti berkreasi, berinovasi, dan berprestasi. Kita harus buktikan ketangguhan kita. Kita harus menangkan masa depan kita dan kita wujudkan cita-cita para Pendiri Bangsa dengan semangat bela negara,</p>
+                    <p>Kita tidak boleh berhenti berkreasi, berinovasi, dan berprestasi. Kita harus buktikan ketangguhan kita. Kita harus menangkan masa depan kita dan kita wujudkan cita-cita para Pendiri Bangsa dengan semangat bela negara.</p>
 
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2">
@@ -110,7 +110,7 @@
                     <p></p>
                 </div>
                 <div class="row gy-4 posts-list">
-                    <?php $data = mysqli_query($con, "SELECT * FROM artikel");
+                    <?php $data = mysqli_query($con, "SELECT * FROM artikel ORDER BY tanggal DESC LIMIT 6");
                     foreach ($data as $row) : ?>
                         <div class="col-xl-4 col-md-6">
                             <article>
@@ -119,10 +119,12 @@
                                     <img src="<?= "admin/img_artikel/" . $row['gambar'] ?>" alt="" class="img-fluid">
                                 </div>
 
-                                <p class="post-category"><?php $dta = mysqli_query($con, "SELECT * FROM kategori WHERE id_kategori = " . $row['id_kategori'] . " ");
-                                foreach ($dta as $kat):
-                                echo $kat['kategori'];
-                                endforeach; ?></p>
+                                <p class="post-category">
+                                    <?php $dta = mysqli_query($con, "SELECT * FROM kategori WHERE id_kategori = " . $row['id_kategori'] . " ");
+                                    foreach ($dta as $kat):
+                                    echo $kat['kategori'];
+                                    endforeach; ?>
+                                </p>
 
                                 <h2 class="title">
                                     <a href="detail_artikel.php?id_artikel=<?= $row['id_artikel'] ?>"><?= $row['judul'] ?></a>

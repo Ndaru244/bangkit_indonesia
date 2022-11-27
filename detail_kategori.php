@@ -62,40 +62,62 @@
     </header><!-- End Header -->
     <!-- End Header -->
 
-
-
-
-
     <main id="main">
 
-        <!-- ======= Our Services Section ======= -->
-        <section id="services" class="services sections-bg">
+        <!-- ======= Blog Section ======= -->
+        <section id="blog" class="blog">
             <div class="container" data-aos="fade-up">
-
                 <div class="section-header">
                     <h2>Berita Tentang Bela Negara Untuk Bangkitkan Semangat Indonesia</h2>
                 </div>
+                <div class="row gy-4 posts-list">
 
-                <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
                     <?php
                     $id_kategori = $_GET['id_kategori'];
                     $data = mysqli_query($con, "SELECT * FROM artikel where id_kategori=$id_kategori");
                     foreach ($data as $row) : ?>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="service-item  position-relative">
-                                <p><img src="<?= "admin/img_artikel/" . $row['gambar'] ?>" width="350" height="200"></p>
-                                <h3><?= $row['judul'] ?></h3>
-                                <p><?= $row['tanggal'] ?></p>
-                                <p><?= substr($row['artikel'], 0, 50) . '...' ?></p>
-                                <a href="detail_artikel.php?id_artikel=<?= $row['id_artikel'] ?>" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+                    <div class="col-xl-4 col-md-6">
+                        <article>
+
+                            <div class="post-img">
+                                <img src="<?= "admin/img_artikel/" . $row['gambar'] ?>" alt="" class="img-fluid">
                             </div>
-                        </div><!-- End Service Item -->
+
+                            <p class="post-category">
+                                <?php $dta = mysqli_query($con, "SELECT * FROM kategori WHERE id_kategori = " . $row['id_kategori'] . " ");
+                                foreach ($dta as $kat):
+                                echo $kat['kategori'];
+                                endforeach; ?>
+                            </p>
+
+                            <h2 class="title">
+                                <a href="detail_artikel.php?id_artikel=<?= $row['id_artikel'] ?>"><?= $row['judul'] ?></a>
+                            </h2>
+
+                            <div class="d-flex align-items-center">
+                                <!-- <img src="assets/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0"> -->
+                                <div class="post-meta">
+                                    <p class=""><?= substr($row['artikel'], 0, 200) . '...' ?></p>
+                                    <p class="post-date">
+                                        <time datetime="2022-01-01"><?php echo $row['tanggal'] ?></time>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div><!-- End post list item -->
                     <?php endforeach; ?>
-                </div>
+
+                </div><!-- End blog posts list -->
+
+                <div class="blog-pagination">
+                    <ul class="justify-content-center">
+                        <li class="active"><a href="#">Lihat Selengkapnya</a></li>
+                    </ul>
+                </div><!-- End blog pagination -->
+
             </div>
-        </section><!-- End Our Services Section -->
-
-
+        </section><!-- End Blog Section -->
 
     </main><!-- End #main -->
 

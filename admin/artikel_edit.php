@@ -37,7 +37,7 @@ error_reporting(0);
                         <label for="">Gambar</label><br>
                         <img id="preview" class="mb-2" src="<?= "img_artikel/" . $row['gambar'] ?>" style="width: 20%;" >
                         <div class="custom-file">
-                            <input accept="iamge/*" type="file" name="gambar" class="custom-file-input" id="imgInp" aria-describedby="inputGroupFileAddon01" required>
+                            <input accept="iamge/*" type="file" name="gambar" class="custom-file-input" id="imgInp" aria-describedby="inputGroupFileAddon01">
                             <label class="custom-file-label" for="inputGroupFile01">Pilih Gambar</label>
                         </div>
                     </div>

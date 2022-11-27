@@ -29,7 +29,7 @@
                             <tr>
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $row['judul'] ?></td>
-                                <td><?= substr($row['artikel'], 0, 50) . '...' ?></td>
+                                <td><?= substr($row['artikel'], 0, 200) . '...' ?></td>
                                 <td><?= $row['tanggal'] ?></td>
                                 <td><img src="<?= "img_artikel/" . $row['gambar'] ?>" width="70" height="70"></td>
                                 <td><?= $row['kategori'] ?></td>

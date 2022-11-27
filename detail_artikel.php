@@ -61,38 +61,157 @@
     </header><!-- End Header -->
     <!-- End Header -->
 
-
-
-
-
     <main id="main">
-
-        <!-- ======= Our Services Section ======= -->
-        <section id="artikel" class="services sections-bg">
-            <div class="container" data-aos="fade-up">
-
-                <div class="section-header">
-                    <h2>Bangkitkan Semangat Indonesia</h2>
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="page-header d-flex align-items-center" style="background-image: url('');">
+                <div class="container position-relative">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h2>Bangkitkan Semangat Indonesia</h2>
+                            <p>Kita tidak boleh berhenti berkreasi, berinovasi, dan berprestasi. Kita harus buktikan ketangguhan kita. Kita harus menangkan masa depan kita dan kita wujudkan cita-cita para Pendiri Bangsa dengan semangat bela negara.</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
 
-                <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
-                    <?php
-                    $id_artikel = $_GET['id_artikel'];
-                    $data = mysqli_query($con, "SELECT * FROM artikel where id_artikel=$id_artikel");
-                    foreach ($data as $row) : ?>
-                        <div class="col-lg-12 col-md-6">
-                            <div class="service-item  position-relative" align="center">
-                                <h3><?= $row['judul'] ?></h3>
-                                <p><img src="<?= "admin/img_artikel/" . $row['gambar'] ?>" width="600" height="300"></p>
-                                <p><?= $row['tanggal'] ?></p>
-                                <p><?= $row['artikel'] ?></p>
-                            </div><!-- End Service Item -->
-                        <?php endforeach; ?>
+        <!-- ======= Blog Details Section ======= -->
+        <section id="blog" class="blog">
+            <?php
+            $id_artikel = $_GET['id_artikel'];
+            $data = mysqli_query($con, "SELECT * FROM artikel where id_artikel=$id_artikel");
+            foreach ($data as $row) : ?>
+                <div class="container" data-aos="fade-up">
+
+                    <div class="row g-5">
+
+                        <div class="col-lg-8">
+
+                            <article class="blog-details">
+
+                                <div class="post-img">
+                                    <img src="<?= "admin/img_artikel/" . $row['gambar'] ?>" alt="" class="img-fluid">
+                                </div>
+
+                                <h2 class="title"><?= $row['judul'] ?></h2>
+
+                                <div class="meta-top">
+                                    <ul>
+                                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="<?= $row['tanggal'] ?>"><?= $row['tanggal'] ?></time></a></li>
+                                            <?php $dta = mysqli_query($con, "SELECT * FROM kategori WHERE id_kategori = " . $row['id_kategori'] . " ");
+                                            foreach ($dta as $kat) : ?>
+                                        <li class="d-flex align-items-center"><i class="bi bi-tags"></i><a href="detail_kategori.php?id_kategori=<?= $row['id_kategori'] ?>">
+                                            <?php echo $kat['kategori'];
+                                            endforeach; ?>
+                                        </a></li>
+                                    </ul>
+                                </div><!-- End meta top -->
+
+                                <div class="content">
+                                    <?= $row['artikel'] ?>
+                                </div><!-- End post content -->
+
+                                <div class="meta-bottom">
+                                    <i class="bi bi-tags"></i>
+                                    <ul class="tags">
+                                        <?php $dta = mysqli_query($con, "SELECT * FROM kategori WHERE id_kategori = " . $row['id_kategori'] . " ");
+                                        foreach ($dta as $kat) : ?>
+                                        <li><a href="detail_kategori.php?id_kategori=<?= $row['id_kategori'] ?>">
+                                                <?php echo $kat['kategori'];
+                                        endforeach; ?>
+                                        </a></li>
+                                    </ul>
+                                </div><!-- End meta bottom -->
+
+                            </article><!-- End blog post -->
+
+                            <div class="post-author d-flex align-items-center">
+                                <img src="assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
+                                <div>
+                                    <h4>Jane Smith</h4>
+                                    <div class="social-links">
+                                        <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                                        <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                                        <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                                    </div>
+                                    <p>
+                                        Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                                    </p>
+                                </div>
+                            </div><!-- End post author -->
 
                         </div>
 
+                        <div class="col-lg-4">
+
+                            <div class="sidebar">
+
+                                <!-- <div class="sidebar-item search-form">
+                                    <h3 class="sidebar-title">Search</h3>
+                                    <form action="" class="mt-3">
+                                        <input type="text">
+                                        <button type="submit"><i class="bi bi-search"></i></button>
+                                    </form>
+                                </div>End sidebar search formn -->
+
+                                <div class="sidebar-item categories">
+                                    <h3 class="sidebar-title">Kategori</h3>
+                                    <ul class="mt-3">
+                                        <?php $dta = mysqli_query($con, "SELECT id_kategori AS id_kategori, count(*) AS total FROM artikel GROUP BY id_kategori");
+                                            $rsltcount = mysqli_fetch_array($dta);
+                                            foreach ($dta as $result) : 
+                                            $data = mysqli_query($con, "SELECT * FROM kategori WHERE id_kategori = ".$result['id_kategori']); foreach ($data as $row) : ?>
+                                        <li><a href="detail_kategori.php?id_kategori=<?= $result['id_kategori'] ?>"><?= $row['kategori'] ?><span>
+                                            <?= $result['total'] ?>
+                                        </span></a></li>
+                                        <?php endforeach; endforeach; ?>
+                                    </ul>
+                                </div><!-- End sidebar categories-->
+
+                                <div class="sidebar-item recent-posts">
+                                    <h3 class="sidebar-title">Artikel Terbaru</h3>
+
+                                    <div class="mt-3">
+                                        <?php $data = mysqli_query($con, "SELECT * FROM artikel ORDER BY tanggal DESC LIMIT 10"); foreach ($data as $row) : ?>
+                                        <div class="post-item mt-3">
+                                            <img src="admin/img_artikel/<?= $row['gambar'] ?>" alt="">
+                                            <div>
+                                                <h4><a href="detail_artikel.php/id_artikel=<?= $row['id_artikel'] ?>"><?= $row['judul'] ?></a></h4>
+                                                <time datetime="2020-01-01"><?= $row['tanggal'] ?></time>
+                                            </div>
+                                        </div><!-- End recent post item-->
+                                        <?php endforeach; ?>
+
+                                    </div>
+
+                                </div><!-- End sidebar recent posts-->
+
+                                <!-- <div class="sidebar-item tags">
+                                    <h3 class="sidebar-title">Tags</h3>
+                                    <ul class="mt-3">
+                                        <li><a href="#">App</a></li>
+                                        <li><a href="#">IT</a></li>
+                                        <li><a href="#">Business</a></li>
+                                        <li><a href="#">Mac</a></li>
+                                        <li><a href="#">Design</a></li>
+                                        <li><a href="#">Office</a></li>
+                                        <li><a href="#">Creative</a></li>
+                                        <li><a href="#">Studio</a></li>
+                                        <li><a href="#">Smart</a></li>
+                                        <li><a href="#">Tips</a></li>
+                                        <li><a href="#">Marketing</a></li>
+                                    </ul>
+                                </div>End sidebar tags -->
+
+                            </div><!-- End Blog Sidebar -->
+
+                        </div>
+                    </div>
+
                 </div>
-        </section><!-- End Our Services Section -->
+            <?php endforeach; ?>
+        </section><!-- End Blog Details Section -->
 
     </main><!-- End #main -->
 

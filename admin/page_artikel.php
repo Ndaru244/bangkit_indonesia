@@ -29,7 +29,7 @@
                             <tr>
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $row['judul'] ?></td>
-                                <td><?= substr($row['artikel'], 0, 200) . '...' ?></td>
+                                <td><?= substr($row['artikel'], 0, 50) . '...' ?></td>
                                 <td><?= $row['tanggal'] ?></td>
                                 <td><img src="<?= "img_artikel/" . $row['gambar'] ?>" width="70" height="70"></td>
                                 <td><?= $row['kategori'] ?></td>
@@ -65,24 +65,24 @@
                         <label for="">Judul</label>
                         <input type="text" name="judul" class="form-control" required>
                         <label for="">Isi Artikel</label>
-                        <textarea rows="5" cols="100" name="artikel" class="form-control" required></textarea>
+                        <textarea id="summernote" name="artikel" class="form-control" required></textarea>
                         <label for="">Tanggal Terbit</label>
                         <input type="date" name="tanggal" class="form-control" required>
-                        <label for="">Gambar</label>
+                        <label for="">Gambar</label><br>
+                        <img id="preview" class="mb-2" src="#" alt="preview images" style="width: 20%;"/>
                         <div class="input-group mb-3">
-
                             <!-- <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupFileAddon01">Pilih Gambar</span>
                             </div> -->
                             <div class="custom-file">
-                                <input type="file" name="gambar" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required>
+                                <input accept="image/*" type="file" name="gambar" id="imgInp" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required>
                                 <label class="custom-file-label" for="inputGroupFile01">Pilih Gambar</label>
                             </div>
                         </div>
                         <!-- 
                         <input type="file" name="gambar" class="form-control" required> -->
                         <label for="">Kategori</label>
-                        <select name="id_kategori" class="form-control" required>
+                        <select multiple name="id_kategori" class="form-control" required>
                             <option value=0 selected>- Pilih Kategori -</option>
                             <?php
                             $tampil = mysqli_query($con, "SELECT * FROM kategori");

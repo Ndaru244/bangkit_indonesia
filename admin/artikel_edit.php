@@ -3,7 +3,7 @@ error_reporting(0);
 ?>
 <!-- content -->
 <div class="container mt-5">
-    <div class="card im-box">
+    <div class="card im-box mb-5">
         <h5 class="card-header">Udah Data Artikel</h5>
         <div class="card-body">
             <h5 class="card-title">Form Edit Artikel</h5>
@@ -27,7 +27,7 @@ error_reporting(0);
                     </div>
                     <div class="form-group">
                         <label for="">Isi Artikel</label>
-                        <textarea rows="15" cols="100" name="artikel" class="ckeditor" class="form-control" id="artikel"><?= $row['artikel'] ?></textarea>
+                        <textarea id="summernote" name="artikel" class="form-control"><?= $row['artikel'] ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="">Tanggal</label>
@@ -35,16 +35,19 @@ error_reporting(0);
                     </div>
                     <div class="form-group">
                         <label for="">Gambar</label><br>
-                        <img src="<?= "img_artikel/" . $row['gambar'] ?>" width="70" height="70">
-                        <input name="gambar" type="file" id="gambar" class="form-control" />
+                        <img id="preview" class="mb-2" src="<?= "img_artikel/" . $row['gambar'] ?>" style="width: 20%;" >
+                        <div class="custom-file">
+                            <input accept="iamge/*" type="file" name="gambar" class="custom-file-input" id="imgInp" aria-describedby="inputGroupFileAddon01" required>
+                            <label class="custom-file-label" for="inputGroupFile01">Pilih Gambar</label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">Kategori</label>
-                        <select name="kategori" class="form-control">
+                        <select multiple name="kategori" class="form-control">
                             <?php
                             $tampil = mysqli_query($con, "SELECT * FROM kategori ORDER BY kategori");
                             if ($row['kategori'] == 0) {
-                                echo "<option value=0 selected>- Pilih Kategori -</option>";
+                                echo "<option value=0>- Pilih Kategori -</option>";
                             }
 
                             while ($edit = mysqli_fetch_array($tampil)) {

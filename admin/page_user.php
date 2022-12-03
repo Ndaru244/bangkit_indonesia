@@ -1,5 +1,4 @@
-<?php include '_header.php';
-session_start(); ?>
+<?php include '_header.php'; ?>
 <!-- content -->
 <div class="container mt-5">
     <div class="card im-box">

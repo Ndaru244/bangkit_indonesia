@@ -1,5 +1,4 @@
 <?php include '_header.php';
-session_start();
 // error_reporting(0); 
 ?>
 <!-- content -->

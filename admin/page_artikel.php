@@ -1,10 +1,23 @@
-<?php include '_header.php'; ?>
+<?php include '_header.php'; session_start(); ?>
 <!-- content -->
 <div class="container mt-5">
     <div class="card im-box mb-5">
         <h5 class="card-header">Data Artikel</h5>
         <div class="card-body">
             <h5 class="card-title">Lihat Data Artikel</h5>
+            <!-- Alert -->
+            <?php if (isset($_SESSION['sukses'])) {
+                $message = $_SESSION['sukses']; ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+
+                    <strong>Sukses!</strong><br> <?= $message ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php unset($_SESSION['sukses']);
+            } ?>
+            <!-- ./Alert -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAdd">
                 Tambah Data Artikel
             </button>
@@ -35,7 +48,29 @@
                                 <td><?= $row['kategori'] ?></td>
                                 <td>
                                     <a class="btn btn-sm btn-success" href="artikel_edit.php?id_artikel=<?= $row['id_artikel'] ?>">Edit</a>
-                                    <a class="btn btn-sm btn-danger" href="artikel_delete.php?id_artikel=<?= $row['id_artikel'] ?>" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
+                                    <a class="btn btn-sm btn-danger" href="" data-toggle="modal" data-target="#modalDelete<?= $row['id_artikel'] ?>">Delete</a>
+                                    <!-- Modal Delete -->
+                                    <div class="modal fade" id="modalDelete<?= $row['id_artikel'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Yakin ?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Yakin Ingin Menghapus Artikel Yang Berjudul <b><?= $row['judul'] ?></b>?</p>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="reset" class="btn btn-danger " data-dismiss="modal">Batal</button>
+                                                    <a href="artikel_delete.php?id_artikel=<?= $row['id_artikel'] ?>" class="btn btn-primary ">Ya, Saya Yakin</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ./Modal Delete -->
                                 </td>
                             </tr>
                         <?php endforeach;
@@ -60,7 +95,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="artikel_add.php" method="POST" enctype="multipart/form-data">
+                <form method="POST" action="artikel_add.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="">Judul</label>
                         <input type="text" name="judul" class="form-control" required>
@@ -69,7 +104,7 @@
                         <label for="">Tanggal Terbit</label>
                         <input type="date" name="tanggal" class="form-control" required>
                         <label for="">Gambar</label><br>
-                        <img id="preview" class="mb-2" src="#" alt="preview images" style="width: 20%;"/>
+                        <img id="preview" class="mb-2" src="#" alt="preview images" style="width: 20%;" />
                         <div class="input-group mb-3">
                             <!-- <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupFileAddon01">Pilih Gambar</span>
@@ -94,7 +129,7 @@
                     </div>
                     <div class="form-group">
                         <button type="button" class="btn btn-danger " data-dismiss="modal">Close</button>
-                        <button type="submit" name="upload" class="btn btn-primary ">Submit</button>
+                        <button type="submit" name="submit" class="btn btn-primary ">Submit</button>
                     </div>
                 </form>
             </div>

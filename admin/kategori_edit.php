@@ -1,4 +1,4 @@
-<?php include '_header.php'; ?>
+<?php include '_header.php'; session_start(); error_reporting(0); ?>
 <!-- content -->
 <div class="container mt-5">
     <div class="card im-box">
@@ -12,7 +12,7 @@
             $data = mysqli_query($con, "SELECT * FROM kategori WHERE id_kategori = '$id_kategori'");
             $row = mysqli_fetch_array($data); ?>
 
-            <form action="proses_edit.php" method="POST">
+            <form action="kategori_edit.php" method="POST">
                 <input type="hidden" name="id_kategori" class="form-control" value="<?= $row['id_kategori'] ?>">
                 <div class="form-group">
                     <label for="">Kategori</label>
@@ -26,4 +26,18 @@
     </div>
 </div>
 <!-- ./content -->
-<?php include '_footer.php';
+<?php
+if (isset($_POST['submit'])) {
+    $id_kategori = $_POST['id_kategori'];
+    $kategori = $_POST['kategori'];
+    $update = mysqli_query($con, "UPDATE kategori SET kategori= '$kategori' WHERE id_kategori = '$id_kategori'");
+
+    if ($update) {
+        $_SESSION['sukses'] = "Data berhasil diubah.";
+        echo "<script>window.location='page_kategori.php';</script>";
+    } else {
+        $_SESSION['gagal'] = "Data gagal diubah.";
+        echo "<script>window.location='page_kategori.php';</script>";
+    }
+}
+include '_footer.php';

@@ -15,6 +15,7 @@ if ($user && password_verify($_POST['password'], $user['password'])) {
     header('location: ../admin/');
     exit;
 } else {
-  echo "Invalid login";
+  $_SESSION['gagal'] = "Username atau Password Salah!!";
+  echo "<script>window.location='login.php';</script>";
 }
 $stmt->close();

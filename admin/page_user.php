@@ -149,8 +149,6 @@ if (isset($_POST['submit'])) {
             echo "<script>window.location='page_user.php';</script>";
         } else {
             $_SESSION['gagal'] = "Data gagal ditambah.";
-            die("Query gagal dijalankan: " . mysqli_errno($con) . " - " . mysqli_error($con));
-
             echo "<script>window.location='page_user.php';</script>";
         }
     } else {

@@ -1,7 +1,8 @@
 <?php include '_config.php';
 session_start();
-if($_SESSION['status']!="sudah_login"){
+if ($_SESSION['status'] != "sudah_login") {
     //melakukan pengalihan
+    $_SESSION['gagal'] = 'Silahkan Login Dahulu Sebelum Mengakses Ke Halaman Admin';
     header("location:login.php");
 }
 ?>
@@ -13,6 +14,9 @@ if($_SESSION['status']!="sudah_login"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CRUD Native</title>
+    <!-- Favicons -->
+    <link href="../assets/img/favicon.png" rel="icon">
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
@@ -93,7 +97,6 @@ if($_SESSION['status']!="sudah_login"){
                 </div>
                 <div class="modal-body">
                     <p>Yakin Ingin Keluar Dari Aplikasi Ini ?</p>
-
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-danger " data-dismiss="modal">Batal</button>

@@ -10,6 +10,12 @@
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome Solid + Brands -->
+    <link href="assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://crookedindonesia.com/assets/admin/plugins/fontawesome-free/css/all.min.css">
     <!-- Data Tables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
@@ -34,10 +40,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item <?php if ($uriSegments[3] == "index.php") {
+                <li class="nav-item <?php if ($uriSegments[3] == "") {
                                         echo "active";
                                     } ?>">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href="../admin/">Home</a>
                 </li>
                 <li class="nav-item <?php if ($uriSegments[3] == "page_kategori.php") {
                                         echo "active";
@@ -49,7 +55,7 @@
                                     } ?>">
                     <a class="nav-link" href="page_artikel.php">Artikel</a>
                 </li>
-                <li class="nav-item <?php if ($uriSegments[3] == "page_user.php") {
+                <li class="nav-item <?php if ($uriSegments[3] == "page_galeri.php") {
                                         echo "active";
                                     } ?>">
                     <a class="nav-link" href="page_user.php">Galeri</a>

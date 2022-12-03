@@ -1,6 +1,5 @@
 <?php include '_header.php';
 error_reporting(0);
-session_start();
 ?>
 <!-- content -->
 <div class="container mt-5">

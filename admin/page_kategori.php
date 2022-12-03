@@ -1,4 +1,4 @@
-<?php include '_header.php'; session_start(); ?>
+<?php include '_header.php'; ?>
 <!-- content -->
 <div class="container mt-5">
     <div class="card im-box mb-5">
@@ -89,8 +89,14 @@
                         <input type="text" name="kategori" class="form-control">
                     </div>
                     <div class="form-group">
-                        <button type="reset" class="btn btn-danger " data-dismiss="modal">Close</button>
-                        <button type="submit" name="submit" class="btn btn-primary ">Submit</button>
+                        <div class="row">
+                            <div class="col">
+                                <button type="reset" class="btn btn-block btn-danger " data-dismiss="modal">Close</button>
+                            </div>
+                            <div class="col">
+                                <button type="submit" name="submit" class="btn btn-block btn-primary ">Submit</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

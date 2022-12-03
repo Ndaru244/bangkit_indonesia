@@ -1,4 +1,10 @@
-<?php include '_config.php'; ?>
+<?php include '_config.php';
+session_start();
+if($_SESSION['status']!="sudah_login"){
+    //melakukan pengalihan
+    header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,6 +72,34 @@
                     <a class="nav-link" href="page_user.php">User</a>
                 </li>
             </ul>
+            <span class="navbar-text">
+                <a href="" class="btn btn-dark" data-toggle="modal" data-target="#logout">
+                    <b> Log Out | </b>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </span>
         </div>
     </nav>
     <!-- ./navbar -->
+    <!-- Modal Delete -->
+    <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Yakin ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Yakin Ingin Keluar Dari Aplikasi Ini ?</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-danger " data-dismiss="modal">Batal</button>
+                    <a href="logout.php" name="submit" class="btn btn-primary ">Ya, Saya Yakin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./Modal Delete -->

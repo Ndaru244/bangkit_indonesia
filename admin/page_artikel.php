@@ -1,4 +1,4 @@
-<?php include '_header.php'; session_start(); ?>
+<?php include '_header.php'; ?>
 <!-- content -->
 <div class="container mt-5">
     <div class="card im-box mb-5">
@@ -128,8 +128,14 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-danger " data-dismiss="modal">Close</button>
-                        <button type="submit" name="submit" class="btn btn-primary ">Submit</button>
+                        <div class="row">
+                            <div class="col">
+                            <button type="button" class="btn btn-block btn-danger " data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="col">
+                            <button type="submit" name="submit" class="btn btn-block btn-primary ">Submit</button>
+                        </div>
+                        </div>
                     </div>
                 </form>
             </div>

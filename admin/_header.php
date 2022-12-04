@@ -68,7 +68,7 @@ if ($_SESSION['status'] != "sudah_login") {
                 <li class="nav-item <?php if ($uriSegments[3] == "page_galeri.php") {
                                         echo "active";
                                     } ?>">
-                    <a class="nav-link" href="page_user.php">Galeri</a>
+                    <a class="nav-link" href="page_galeri.php">Galeri</a>
                 </li>
                 <li class="nav-item <?php if ($uriSegments[3] == "page_user.php") {
                                         echo "active";

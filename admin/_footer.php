@@ -6,6 +6,9 @@
 
 <!-- Speififc Script -->
 <script>
+  $("#alert").fadeTo(2500, 500).fadeToggle(500, function() {
+    $("#alert").slideUp(500);
+  });
   $('#summernote').summernote({
     placeholder: '',
     height: 300,

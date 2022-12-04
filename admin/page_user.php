@@ -52,8 +52,9 @@
                                 <td><?= $row['username'] ?></td>
                                 <td><?= $row['password'] ?></td>
                                 <td>
-                                    <a class="btn btn-sm btn-success" href="user_edit.php?id_user=<?= $row['id_user'] ?>">Edit</a>
-                                    <a class="btn btn-sm btn-danger" href="" data-toggle="modal" data-target="#modalDelete<?= $row['id_user'] ?>">Delete</a>
+                                    <a class="btn btn-sm btn-success <?= $row['id_user'] != 1 ? '' : 'btn-block'; ?>" href="user_edit.php?id_user=<?= $row['id_user'] ?>">Edit</a>
+                                    <?php if($row['id_user'] != 1){ ?>
+                                    <a class="btn btn-sm btn-danger " href="" data-toggle="modal" data-target="#modalDelete<?= $row['id_user'] ?>">Delete</a>
                                     <!-- Modal Delete -->
                                     <div class="modal fade" id="modalDelete<?= $row['id_user'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
@@ -78,7 +79,7 @@
                                     <!-- ./Modal Delete -->
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php } endforeach; ?>
                     </tbody>
                 </table>
             </div>

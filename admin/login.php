@@ -55,26 +55,14 @@ if ($_SESSION['status'] === "sudah_login") {
 							<?php if ($_SESSION['gagal']) {
 								$message = $_SESSION['gagal'];
 							?>
-								<div class="alert alert-danger alert-dismissible fade show" role="alert">
+								<div class="alert alert-danger alert-dismissible fade show" id="alert" role="alert">
 									<strong>Peringatan!</strong><br> <?= $message ?>
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
 							<?php unset($_SESSION['gagal']);
-							} else if ($_SESSION['sukses']) {
-								$message = $_SESSION['sukses'];
-							?>
-								<div class="alert alert-success alert-dismissible fade show" role="alert">
-									<strong>Sukses!</strong><br> <?= $message ?>
-									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-							<?php unset($_SESSION['sukses']);
-							}
-
-							?>
+							} ?>
 							<!-- ./Alert -->
 							<form action="login_proses.php" method="post">
 								<div class="form-group first">
@@ -101,6 +89,10 @@ if ($_SESSION['status'] === "sudah_login") {
 		<script src="assets/js/main.js"></script>
 		<!-- Show And Hide Password -->
 		<script>
+			$("#alert").fadeTo(2500, 500).fadeToggle(500, function() {
+				$("#alert").slideUp(500);
+			});
+
 			function password_show_hide() {
 				var x = document.getElementById("password");
 				var show_eye = document.getElementById("show_eye");

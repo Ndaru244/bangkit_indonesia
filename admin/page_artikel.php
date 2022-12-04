@@ -8,7 +8,7 @@
             <!-- Alert -->
             <?php if (isset($_SESSION['sukses'])) {
                 $message = $_SESSION['sukses']; ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert">
 
                     <strong>Sukses!</strong><br> <?= $message ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

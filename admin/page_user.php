@@ -1,14 +1,14 @@
 <?php include '_header.php'; ?>
 <!-- content -->
 <div class="container mt-5">
-    <div class="card im-box">
+    <div class="card im-box mb-5">
         <h5 class="card-header">Data user</h5>
         <div class="card-body">
             <h5 class="card-title">Lihat Data user</h5>
             <!-- Alert -->
             <?php if (isset($_SESSION['sukses'])) {
                 $message = $_SESSION['sukses']; ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert">
                     <strong>Sukses!</strong><br> <?= $message; ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

@@ -10,7 +10,7 @@
             <!-- Alert -->
             <?php if (isset($_SESSION['gagal'])) {
                 $message = $_SESSION['gagal']; ?>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible fade show" id="alert" role="alert">
                     <strong>Gagal!</strong><br> <?= $message; ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -31,6 +31,7 @@
                     <input type="text" name="nama_user" class="form-control" value="<?= $row['nama_user'] ?>">
                     <label for="">Username</label>
                     <input type="text" name="username" class="form-control mt-2" value="<?= $row['username'] ?>">
+                    <br><small class="text-danger"><b>*Kosongkan jika tidak ingin mengubah Password</b></small>
                     <div class="row mt-2">
                         <div class="col">
                             <label for="">Password Lama</label>
@@ -43,7 +44,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-danger ">Close</button>
                     <button type="submit" name="submit" class="btn btn-primary ">Update</button>
                 </div>
             </form>
@@ -61,24 +61,35 @@ if (isset($_POST['submit'])) {
     $pass_lama = $_POST['password_lama'];
     $pass_baru = password_hash($_POST['password_baru'], PASSWORD_DEFAULT,);
     $uname = strtolower($username);
-    if (preg_match('/^[a-z\d_]{2,20}$/i', $uname)) {
-        if (password_verify($pass_lama, $row['password'])) {
-            $update = mysqli_query($con, "UPDATE users SET nama_user= '$nama', username='$username',password='$pass_baru' WHERE id_user = '$id_user'");
-            if ($update) {
-                $_SESSION['sukses'] = "Data berhasil diubah.";
-                echo "<script>window.location='page_user.php';</script>";
+    if ($pass_lama != '') {
+        if (preg_match('/^[a-z\d_]{2,20}$/i', $uname)) {
+            if (password_verify($pass_lama, $row['password'])) {
+                $update = mysqli_query($con, "UPDATE users SET nama_user= '$nama', username='$username',password='$pass_baru' WHERE id_user = '$id_user'");
+                if ($update) {
+                    $_SESSION['sukses'] = "Data berhasil diubah.";
+                    echo "<script>window.location='page_user.php';</script>";
+                } else {
+                    $_SESSION['gagal'] = "Data gagal diubah.";
+                    echo "<script>window.location='page_user.php';</script>";
+                }
             } else {
-                $_SESSION['gagal'] = "Data gagal diubah.";
-                echo "<script>window.location='page_user.php';</script>";
+                $_SESSION['gagal'] = "Password Lama Salah.";
+    
+                echo "<script>window.location='user_edit.php?id_user=$id_user';</script>";
             }
         } else {
-            $_SESSION['gagal'] = "Password Lama Salah.";
-
+            $_SESSION['gagal'] = "Username tidak boleh menggunakan <b>'spasi'</b> dan hanya boleh menggunakan karakter <b>'_'</b>.";
             echo "<script>window.location='user_edit.php?id_user=$id_user';</script>";
         }
     } else {
-        $_SESSION['gagal'] = "Username tidak boleh menggunakan <b>'spasi'</b> dan hanya boleh menggunakan karakter <b>'_'</b>.";
-        echo "<script>window.location='user_edit.php?id_user=$id_user';</script>";
+        $update = mysqli_query($con, "UPDATE users SET nama_user= '$nama', username='$username' WHERE id_user = '$id_user'");
+        if ($update) {
+            $_SESSION['sukses'] = "Data berhasil diubah.";
+            echo "<script>window.location='page_user.php';</script>";
+        } else {
+            $_SESSION['gagal'] = "Data gagal diubah.";
+            echo "<script>window.location='page_user.php';</script>";
+        }
     }
 }
 include '_footer.php'; ?>

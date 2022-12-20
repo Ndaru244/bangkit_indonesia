@@ -1,15 +1,8 @@
-## Panduan syntax untuk Commit
+## Panduan Penggunaan Aplikasi
 
-**Berikut adalah panduan untuk melakukan commit :**
-| action | Description |
+> Untuk halaman Admin dapat di akses melaui domain [localhost/bangkit_indonesia/admin](http://localhost/bangkit_indonesia/admin/)
+
+*Berikut adalah Username dan Password untuk masuk ke halaman Admin :**
+| Username | Password |
 | --- | --- |
-| `"add: context"` | Deskripsi commit jika ingin **Menambahkan** files |
-| `"change: context"` | Deskripsi commit jika ingin **Mengedit** files |
-| `"remove: context"` | Deskripsi commit jika ingin **Menghapus** files |
-| `"fix: context"` | Deskripsi commit jika ingin **Memperbaiki bug atau error** |
-
-Contoh :
-> ```git commit "add: crud product"```
-
-## Catatan :
-> Pastikan file yang di `commit` sesuai dengan deskripsi commit. contohnya seperti ini ```git commit "add: crud product"``` maka file yang di commit juga harus merupakan bagian dari file - file **crud product** itu sendiri.
+| admin | BelaNegara |

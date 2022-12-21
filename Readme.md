@@ -9,7 +9,7 @@
 
 > Untuk mengakses website yang sudah di hosting dapat diakses melalui [link ini](https://firlanprayoga.my.id)
 
-*Berikut adalah Username dan Password pada link diatas _https://firlanprayoga.my.id_ :*
+*Berikut adalah Username dan Password pada link diatas _firlanprayoga.my.id_ :*
 | Username | Password |
 | --- | --- |
 | admin | Mbkm_belneg_esgul |
